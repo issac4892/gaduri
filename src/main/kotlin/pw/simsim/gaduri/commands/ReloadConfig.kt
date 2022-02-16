@@ -4,10 +4,11 @@
  *  Licensed under the General Public License, Version 3.0. (https://opensource.org/licenses/gpl-3.0/)
  */
 
-package com.baehyeonwoo.sample.plugin.commands
+package pw.simsim.gaduri.commands
 
 import io.github.monun.kommand.node.LiteralNode
 import net.kyori.adventure.text.Component.text
+import pw.simsim.gaduri.tasks.ConfigReloadTask
 
 /***
  * @author BaeHyeonWoo
@@ -16,12 +17,18 @@ import net.kyori.adventure.text.Component.text
  * "Until I can get ahead of myself."
  */
 
-object SampleKommand {
+object ReloadConfig {
     fun register(builder: LiteralNode) {
         builder.apply {
-            requires { playerOrNull != null && isOp }
+            requires { isOp }
             executes {
-                sender.sendMessage(text("Hello World!"))
+                try{
+                    ConfigReloadTask()
+                    sender.sendMessage(text("Success!"))
+                }
+                catch (e: Exception){
+                    sender.sendMessage("Failed! $e")
+                }
             }
         }
     }

@@ -4,10 +4,9 @@
  *  Licensed under the General Public License, Version 3.0. (https://opensource.org/licenses/gpl-3.0/)
  */
 
-package com.baehyeonwoo.sample.plugin.objects
+package pw.simsim.gaduri.objects
 
-import com.baehyeonwoo.sample.plugin.SamplePluginMain
-import org.bukkit.plugin.Plugin
+import pw.simsim.gaduri.PluginMain
 
 /***
  * @author BaeHyeonWoo
@@ -16,10 +15,8 @@ import org.bukkit.plugin.Plugin
  * "Until I can get ahead of myself."
  */
 
-object SampleObject {
-    val plugin = SamplePluginMain.instance
+object Object {
+    val plugin = PluginMain.instance
 
     val server = plugin.server
-
-    const val message = "Hello World!"
 }
